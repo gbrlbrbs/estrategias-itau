@@ -22,15 +22,15 @@ def handle_data(context, data):
     percent = 1.0 / len(context.assets)
     for sym in context.assets.values():
         hist = data.history(sym, 'price', 40, '1d')
-        sma_40 = hist.mean()
-        sma_10 = hist[-10:].mean()
+        sma_21 = hist.mean()
+        sma_3 = hist[-10:].mean()
 
         open_orders = get_open_orders()
 
-        if sma_40 < sma_10:
+        if sma_21 < sma_3:
             if sym not in open_orders:
                 order_target_percent(sym, percent)
-        elif sma_40 > sma_10:
+        elif sma_21 > sma_3:
             if sym not in open_orders:
                 order_target_percent(sym, -percent)
 
