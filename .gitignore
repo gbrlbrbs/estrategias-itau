@@ -1,5 +1,6 @@
 /.idea
 /.ipynb_checkpoints
+/jao
 *.pickle
 *.ipynb
 *.csv
